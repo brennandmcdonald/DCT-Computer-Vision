@@ -26,7 +26,7 @@ if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
     detector = apriltag.Detector()
     directory = "data/Track 10-22/"
-    file = directory+"60_2.png"
+    file = directory+"30_3.png"
     print(file)
     img = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
     tag_list = reader(detector, img, file)
