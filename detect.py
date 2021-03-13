@@ -23,13 +23,18 @@ def reader(detector, img, file_name):
 
 
 if __name__ == '__main__':
-    cap = cv2.VideoCapture(0)
+#    cap = cv2.VideoCapture(0)
+    fail = []
     detector = apriltag.Detector()
     directory = "data/Track 10-22/"
-    file = directory+"30_3.png"
-    print(file)
-    img = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
-    tag_list = reader(detector, img, file)
-    print(tag_list)
-    cap.release()
+    for f in os.listdir(directory):
+        file = directory+f
+        print(file)
+        img = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
+        tag_list = reader(detector, img, file)
+        print(tag_list)
+        if len(tag_list) == 0:
+            fail.append(file)
+    # cap.release()
     cv2.destroyAllWindows()
+    print(fail)
